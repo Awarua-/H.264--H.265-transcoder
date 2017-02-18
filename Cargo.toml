@@ -1,5 +1,5 @@
 [package]
-name = "H264--H265-Transcoder"
+name = "h264_h265_transcoder"
 description = "H.264 to H.265 transcoder"
 version = "0.0.1"
 authors = [ "Dion Woolley woolley.dion@gmail.com" ]

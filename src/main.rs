@@ -197,14 +197,15 @@ fn main() {
         ffmpeg_session = run_with_stdio("ffmpeg".to_string(),
                                         vec![String::from("-i"),
                                              copy_file_path_string,
-                                             String::from("-c:v"),
-                                             String::from("libx265"),
-                                             String::from("-preset"),
-                                             String::from("medium"),
                                              String::from("-map"),
                                              String::from("0"),
                                              String::from("-c"),
                                              String::from("copy"),
+                                             String::from("-c:v"),
+                                             String::from("-c:v"),
+                                             String::from("libx265"),
+                                             String::from("-preset"),
+                                             String::from("medium"),
                                              temp_file_path_string]);
     }
 
