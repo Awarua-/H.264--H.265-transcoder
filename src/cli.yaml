@@ -1,0 +1,19 @@
+name: H.264--H.265-Transcoder
+version: "1.0"
+author: Dion Woolley. <woolley.dion@gmail.com>
+about: Does awesome things
+args:
+    - FILE:
+        help: File to transcode.
+        required: true
+        value_name: FILE
+        index: 1
+    - verbose:
+        short: v
+        multiple: true
+        help: Sets the level of verbosity
+    - TEMP_DIR:
+        help: Directory for temp storing of transcoded files.
+        required: false
+        value_name: TEMP_DIR
+        index: 2

@@ -1,0 +1,17 @@
+[package]
+name = "H264--H265-Transcoder"
+description = "H.264 to H.265 transcoder"
+version = "0.0.1"
+authors = [ "Dion Woolley woolley.dion@gmail.com" ]
+repository = "https://github.com/Awarua-/H.264--H.265-Transcoder.git"
+license-file = "LICENSE"
+
+[dependencies]
+log = "0.3"
+log4rs = "0.5"
+env_logger = "0.3"
+time = "0.1"
+
+[dependencies.clap]
+version = "~2.20.0"
+features = ["suggestions", "color", "wrap_help", "yaml", "unstable"]
