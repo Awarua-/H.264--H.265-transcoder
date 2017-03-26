@@ -15,7 +15,7 @@ use std::io::{BufReader, BufRead, Read, Result};
 use std::ffi::OsStr;
 use std::env;
 
-static NVENC_CHECK_STRING: &'static str = "supports NVENC";
+static NVENC_CHECK_STRING: &'static str = "No NVENC capable devices found";
 static EXTENSION: &'static str = "mkv";
 static H264_CHECK_STRING: &'static str = "h264";
 
@@ -84,11 +84,11 @@ fn main() {
     let supports_nvenc = String::from_utf8_lossy(ffmpeg.stderr.as_slice())
         .contains(NVENC_CHECK_STRING);
     let hwaccel = if supports_nvenc {
+        false
+    } else {
         println!("Supports NVENC");
         warn!("Supports NVENC");
         true
-    } else {
-        false
     };
 
     let path = Path::new(matches.value_of("FILE").unwrap());
@@ -191,7 +191,7 @@ fn main() {
                                              String::from("-c:v"),
                                              String::from("hevc_nvenc"),
                                              String::from("-preset"),
-                                             String::from("slow"),
+                                             String::from("lossless"),
                                              temp_file_path_string]);
     } else {
         ffmpeg_session = run_with_stdio("ffmpeg".to_string(),
@@ -201,7 +201,6 @@ fn main() {
                                              String::from("0"),
                                              String::from("-c"),
                                              String::from("copy"),
-                                             String::from("-c:v"),
                                              String::from("-c:v"),
                                              String::from("libx265"),
                                              String::from("-preset"),
